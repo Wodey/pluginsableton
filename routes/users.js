@@ -34,8 +34,8 @@ router.post("/register", async (req, res) => {
   User.findOne({ username: username}, (result, err) => {
     if(result) res.send("Error 1");
   });
-  res.send('maudsf');
   const newUser = new User({username: username, password: password});
+    res.send('maudsf');
   const result = await newUser.save();
   res.send('hello')
   req.login(newUser, (error) => {
