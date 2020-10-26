@@ -4,7 +4,7 @@ var passport = require('passport');
 var User = require('../models/userModel');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('Слушаю ПОшлую молли и всем советую');
+  res.send('Слушаю ПОшлую моЛлли и всем советую');
 });
 
 router.post("/", function(req, res, next) {
