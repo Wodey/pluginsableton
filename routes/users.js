@@ -29,9 +29,9 @@ router.post("/register", async (req, res) => {
   User.findOne({ username: username}, (result, err) => {
     if(result) res.send("Error 1");
   });
-
   const newUser = new User({username: username, password: password});
   const result = await newUser.save();
+  res.send("success but no")
   req.login(newUser, (error) => {
     if (error) throw error;
     return res.send("Successfull registration and login");
