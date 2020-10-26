@@ -14,4 +14,8 @@ router.post("/reqLis", function(req, res, next) {
   res.send({...req.body, res: true});
 });
 
+router.post("/login", function(req, res, next) {
+  res.send({...req.body});
+})
+
 module.exports = router;
