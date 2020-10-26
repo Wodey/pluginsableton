@@ -24,8 +24,14 @@ router.get("/logout", (req, res) => {
   res.send("Successfull Logout");
 })
 
+router.get("/test", async (req, res) => {
+  const user = await User.find({});
+  res.send(user);
+})
+
 router.post("/register", async (req, res) => {
   const {username, password } = req.body;
+  res.send("hi")
   User.findOne({ username: username}, (result, err) => {
     if(result) res.send("Error 1");
   });
