@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post("/", function(req, res, next) {
-  res.send({...req.body, res: "Слушаю моргенштерна и радуюсь жизни"});
+  res.send({...req.body, res: "listening poshlay molly"});
 });
 
 module.exports = router;
