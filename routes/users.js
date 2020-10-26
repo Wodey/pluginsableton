@@ -31,6 +31,7 @@ router.get("/test", async (req, res) => {
 
 router.post("/register", async (req, res) => {
   const {username, password } = req.body;
+  res.send("hels")
   User.findOne({ username: username}, (result, err) => {
     if(result) res.send("Error 1");
   });
