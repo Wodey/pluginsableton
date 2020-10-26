@@ -10,4 +10,8 @@ router.post("/", function(req, res, next) {
   res.send({...req.body, res: "listening poshlay molly"});
 });
 
+router.post("/reqLis", function(req, res, next) {
+  res.send({...req.body, res: true});
+});
+
 module.exports = router;
