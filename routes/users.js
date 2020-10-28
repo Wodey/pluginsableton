@@ -23,7 +23,11 @@ router.post("/login", passport.authenticate('local'), (req, res) => {
 
 router.post("/test2", async (req, res) => {
   const newUser = new User({username: "hi", password: "fuck"});
-  const result = await newUser.save();
+  try {
+      const result = await newUser.save();
+  } catch (e) {
+    res.send("error")
+  }
   res.send(result)
 
 })
