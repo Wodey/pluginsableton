@@ -7,9 +7,11 @@ const UserSchema = new mongoose.Schema({
   sandbox: { type: Boolean, default: false}
 });
 
+const salt = bcrypt.genSaltSync(10);
+
 UserSchema.pre('save', function (next) {
   var user = this;
-  bcrypt.hash(user.password, 10, null, function(err,hash) {
+  bcrypt.hash(user.password, salt, null, function(err,hash) {
     if (err) return next(err);
     user.password = hash;
     next();
