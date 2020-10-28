@@ -47,7 +47,7 @@ router.post("/register", (req, res) => {
     if(result) res.send("Error 1");
   });
   const newUser = new User({username: username, password: password});
-  newUser.save().then((res) => res.send(res)).catch(err => res.send(err));
+  newUser.save().then((res) => res.send(res + "Success")).catch(err => res.send(err));
 });
 
 module.exports = router;
