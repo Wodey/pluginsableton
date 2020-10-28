@@ -26,7 +26,7 @@ router.post("/test2", async (req, res) => {
   try {
       const result = await newUser.save();
   } catch (e) {
-    res.send("error")
+    res.send(e)
   }
   res.send(result)
 
