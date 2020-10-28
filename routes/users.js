@@ -41,14 +41,13 @@ router.get("/test", async (req, res) => {
   res.send(user);
 })
 
-router.post("/register", async (req, res) => {
+router.post("/register", (req, res) => {
   const {username, password } = req.body;
   User.findOne({ username: username}, (result, err) => {
     if(result) res.send("Error 1");
   });
   const newUser = new User({username: username, password: password});
-  const result = newUser.save((err) => res.send(err));
-  res.send('succes')
+  newUser.save().then((res) => res.send(res)).catch(err => res.send(err));
 });
 
 module.exports = router;
