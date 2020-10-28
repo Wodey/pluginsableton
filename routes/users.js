@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var client = require('../db');
+
 var User = require('../models/userModel');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -19,6 +21,12 @@ router.post("/login", passport.authenticate('local'), (req, res) => {
   res.send("Successfull Authentication");
 });
 
+router.post("/test2", async (req, res) => {
+  const newUser = new User({username: "hi", password: "fuck"});
+  const result = await newUser.save();
+  res.send(result)
+
+})
 router.get("/logout", (req, res) => {
   req.logout();
   res.send("Successfull Logout");
