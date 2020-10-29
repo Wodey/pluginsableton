@@ -41,6 +41,10 @@ router.get("/test", async (req, res) => {
   res.send(user);
 })
 
+router.get("/issandboxtrue", async (req, res) => {
+  const user = await User.find({username: req.user.username});
+  return user.sandbox;
+})
 router.post("/register", (req, res) => {
   const {username, password } = req.body;
   User.findOne({ username: username}, (result, err) => {
