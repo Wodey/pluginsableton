@@ -40,10 +40,10 @@ router.get("/test", async (req, res) => {
   res.send(user);
 })
 
-router.get("/issandboxtrue", async (req, res) => {
+router.post("/issandboxtrue", async (req, res) => {
   res.send(req.user.sandbox);
 });
-router.get("/getlicense/:id", async (req, res) => {
+router.post("/getlicense/:id", async (req, res) => {
   const licenses = req.user.licenses;
   const id = req.params.id;
   const result = licenses.find((e, i, a) => {
