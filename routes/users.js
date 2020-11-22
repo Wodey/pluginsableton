@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var sha1 = require('js-sha1');
+var md5 = require('md5');
+var md5hex = require('md5-hex');
 
 var User = require('../models/userModel');
 /* GET users listing. */
@@ -59,5 +62,12 @@ router.post("/register", (req, res) => {
   const newUser = new User({username: username, password: password});
   newUser.save().then((response) => res.send("there are a success" + response)).catch(err => res.send('There are a error' + err));
 });
+
+router.post("/hash", (req, res) => {
+  const {hash} = req.body;
+  const hashmd5 = md5(hash);
+  const hashsha1 = sha1(hashmd5);
+  res.send(hashsha1);
+})
 
 module.exports = router;
