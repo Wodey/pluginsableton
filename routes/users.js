@@ -70,7 +70,7 @@ router.post("/hash", (req, res) => {
     const hashsha1 = sha1(hashmd5);
     res.send(hashsha1);
 } catch(error) {
-  res.send(error);
+  res.send("hello");
 }
 })
 
