@@ -64,10 +64,14 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/hash", (req, res) => {
-  const {hash} = req.body;
-  const hashmd5 = md5(hash);
-  const hashsha1 = sha1(hashmd5);
-  res.send(hashsha1);
+  try {
+    const {hash} = req.body;
+    const hashmd5 = md5(hash);
+    const hashsha1 = sha1(hashmd5);
+    res.send(hashsha1);
+} catch(error) {
+  res.send(error);
+}
 })
 
 module.exports = router;
