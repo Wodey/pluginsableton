@@ -3,7 +3,6 @@ var router = express.Router();
 var passport = require('passport');
 var sha1 = require('js-sha1');
 var md5 = require('md5');
-var md5hex = require('md5-hex');
 
 var User = require('../models/userModel');
 /* GET users listing. */
@@ -64,14 +63,10 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/hash", (req, res) => {
-  try {
     const {hash} = req.body;
     const hashmd5 = md5(hash);
     const hashsha1 = sha1(hashmd5);
     res.send(hashsha1);
-} catch(error) {
-  res.send("hello");
-}
 })
 
 module.exports = router;
